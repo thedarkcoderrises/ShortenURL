@@ -40,7 +40,7 @@ class A1 extends Thread{
                         notifyAllExample.notifyAll();
                     }
                     System.out.println("A wait");
-                    notifyAllExample.wait();
+                    notifyAllExample.wait();// It will wait untill it is Notified by any other thread
                     System.out.println("Got Access ThreadA");
                     
                 }
