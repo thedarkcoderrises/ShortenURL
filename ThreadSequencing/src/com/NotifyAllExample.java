@@ -41,7 +41,7 @@ class A1 extends Thread{
                     }
                     System.out.println("A wait");
                     notifyAllExample.wait();// It will wait untill it is Notified by any other thread
-                    System.out.println("Got Access ThreadA");
+                    System.out.println("Got Access Thread A");
                     
                 }
 
@@ -80,7 +80,7 @@ System.out.println("B started");
                     }
                     System.out.println("B wait");
                     notifyAllExample.wait();
-                    System.out.println("Got Access ThreadB");
+                    System.out.println("Got Access Thread B");
                 }
 
             }
@@ -117,7 +117,7 @@ class C1 extends Thread{
                     }
                     System.out.println("C wait");
                     notifyAllExample.wait();
-                    System.out.println("Got Access ThreadC");
+                    System.out.println("Got Access Thread C");
                     
                 }
 
