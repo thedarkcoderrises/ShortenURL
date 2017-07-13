@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.shorturl.form.ShortURLForm;
 import com.shorturl.form.UrlForm;
 import com.shorturl.service.ShortURLService;
+import com.shorturl.util.JqgridResponse;
 
 @Controller
 public class MyShortURLController {
@@ -34,10 +35,22 @@ public class MyShortURLController {
 	  @ModelAttribute("url") UrlForm urlform) {
 	    ModelAndView mav = null;
 	    mav = new ModelAndView("home");
-//	    mav.addObject("labeltinyurl","/tinyURL/1");
-//	    mav.addObject("tinyurl","/tinyURL/1");
+	    urlService.createShortURL(urlform);
 	    List<ShortURLForm> urlformLst = urlService.getShortURLLst();
 	    mav.addObject("tinyurlst",urlformLst);
 	    return mav;
 	  }
+	
+	
+	/* @RequestMapping(value = "/createTiny", method = RequestMethod.POST)
+	  public JqgridResponse<ShortURLForm> createShortURL(HttpServletRequest request, HttpServletResponse response,
+	  @ModelAttribute("url") UrlForm urlform) {
+	    List<ShortURLForm> urlformLst = urlService.getShortURLLst();
+	    JqgridResponse<ShortURLForm> jqgrid = new JqgridResponse<>();
+	    jqgrid.setRows(urlformLst);
+	    jqgrid.setRecords(Long.valueOf(urlformLst.size()).toString());
+	    jqgrid.setTotal(Integer.valueOf(10).toString());
+	    jqgrid.setPage(Integer.valueOf(1).toString());
+	    return jqgrid;
+	  }*/
 }

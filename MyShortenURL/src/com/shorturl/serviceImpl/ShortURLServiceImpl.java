@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.shorturl.form.ShortURLForm;
+import com.shorturl.form.UrlForm;
 import com.shorturl.service.ShortURLService;
 
 @Service
@@ -38,10 +39,24 @@ public class ShortURLServiceImpl  implements ShortURLService{
 		ShortURLForm suf=null;
 		for (String key : urlMap.keySet()) {
 			suf =new ShortURLForm();
+			suf.setOriginalURL(urlMap.get(key));
 			suf.setShortURL("/tinyURL/"+key);
 			lst.add(suf);
 		}
 		return lst;
+	}
+
+
+	@Override
+	public ShortURLForm createShortURL(UrlForm urlForm) {
+		if(urlForm.getOriginalURL()== null || urlForm.getOriginalURL().isEmpty())
+			return null;
+		int key = urlMap.size()+1;
+		ShortURLForm suf = new ShortURLForm();
+		suf =new ShortURLForm();
+		suf.setShortURL("/tinyURL/"+key);
+		urlMap.put(""+key, urlForm.getOriginalURL());		
+		return suf;
 	}
 
 }

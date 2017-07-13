@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class ShortURLForm {
 	
+	Integer id;
+	
 	String originalURL;
 	
 	Date created;
@@ -32,6 +34,14 @@ public class ShortURLForm {
 
 	public void setShortURL(String shortURL) {
 		this.shortURL = shortURL;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	
